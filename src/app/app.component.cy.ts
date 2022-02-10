@@ -12,4 +12,8 @@ describe('AppComponent', () => {
   it('should render title', () => {
     cy.get('.content span').contains('angular-ct app is running!');
   });
+
+  it('should have a Learn Angular Button', () => {
+    cy.get('.card-container span').contains('Learn Angular');
+  });
 });

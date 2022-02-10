@@ -11,6 +11,7 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 export interface TestBedConfig extends TestModuleMetadata {
   // this extends the normal angular TestBed config
@@ -20,6 +21,7 @@ export interface TestBedConfig extends TestModuleMetadata {
 function init(config: TestBedConfig): TestBed {
   const testBed: TestBed = getTestBed();
 
+  testBed.resetTestEnvironment();
   testBed.initTestEnvironment(
     BrowserDynamicTestingModule,
     platformBrowserDynamicTesting(),
