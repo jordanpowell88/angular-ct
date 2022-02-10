@@ -1,0 +1,10 @@
+{
+  "experimentalFetchPolyfill": true,
+  "fixturesFolder": false,
+  "includeShadowDom": true,
+  "fileServerFolder": "src",
+  "component": {
+    "componentFolder": "src/app",
+    "testFiles": "**/*.cy.ts"
+  }
+}
