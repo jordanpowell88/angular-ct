@@ -2,7 +2,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/spec",
+    "outDir": "./out-tsc/cy",
     "types": ["cypress"]
   },
   "include": ["src/**/*.d.ts", "src/**/*.cy.ts"]

@@ -1,5 +1,5 @@
-import 'zone.js/dist/zone';
-import 'zone.js/dist/zone-testing';
+import 'zone.js';
+import 'zone.js/testing';
 import { Type } from '@angular/core';
 import {
   ComponentFixture,
@@ -11,14 +11,15 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
-export interface TestBedConfig extends TestModuleMetadata {
+export interface TestBedConfig<T extends object> extends TestModuleMetadata {
   // this extends the normal angular TestBed config
-  // we will most likely need to add additional props in here
+  // and allows us to pass component Input() props as part of the config object
+  // there maybe additional configuration options we will need as well
+  inputs?: { [key in keyof T]: any }[];
 }
 
-function init(config: TestBedConfig): TestBed {
+function init<T extends object>(config: TestBedConfig<T>): TestBed {
   const testBed: TestBed = getTestBed();
 
   testBed.resetTestEnvironment();
@@ -36,17 +37,20 @@ function init(config: TestBedConfig): TestBed {
   return testBed;
 }
 
-export function mount<T>(
+export function mount<T extends object>(
   component: Type<T>,
-  config: TestBedConfig = {}
+  config: TestBedConfig<T> = {}
 ): ComponentFixture<T> {
   const testBed: TestBed = init(config);
 
   testBed.compileComponents();
   const fixture = testBed.createComponent(component);
+  let componentInstance: T = fixture.componentInstance;
 
-  // look into this to see if this runs and how many times its being called
-  fixture.whenStable().then(() => fixture.detectChanges());
+  config.inputs?.map((input) => {
+    componentInstance = Object.assign(componentInstance, input);
+  });
+  fixture.detectChanges();
 
   return fixture;
 }
