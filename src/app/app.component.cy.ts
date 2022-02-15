@@ -8,6 +8,14 @@ describe('AppComponent', () => {
     mount(AppComponent, { imports: [AppModule, RouterTestingModule] });
   });
 
+  it('should render the child components', () => {
+    cy.get('app-rocket').should('be.visible');
+    cy.get('app-resources').should('be.visible');
+    cy.get('app-next-steps').should('be.visible');
+    cy.get('app-round-card-buttons').should('be.visible');
+    cy.get('app-footer').should('be.visible');
+  });
+
   it('should render title', () => {
     cy.get('.content span').contains('angular-ct app is running!');
   });
