@@ -9,7 +9,7 @@ describe('RocketComponent', () => {
 
   it('should render with title passed in via Input', () => {
     const title = 'My Test App';
-    mount(RocketComponent, { inputs: [{ title }] });
+    mount(RocketComponent, { inputs: { title } });
     cy.get('.card').contains(`${title} app is running!`);
   });
 });

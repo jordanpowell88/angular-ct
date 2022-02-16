@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularComponent } from './angular.component';
 import { AngularModule } from './angular.module';
-import { mount, TestBedConfig } from './mount';
+import { mount } from './mount';
 
 describe('mount', () => {
   let fixture: ComponentFixture<AngularComponent>;

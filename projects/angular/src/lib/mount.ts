@@ -15,9 +15,7 @@ import {
 export interface TestBedConfig<T extends object> extends TestModuleMetadata {
   // this extends the normal angular TestBed config
   // and allows us to pass component Input() props as part of the config object
-  // there maybe additional configuration options we will need as well
-  // TODO this shouldn't be an array
-  inputs?: { [key in keyof T]: any }[];
+  inputs?: { [P in keyof T]: T[P] }
 }
 
 function init<T extends object>(config: TestBedConfig<T>): TestBed {
@@ -30,9 +28,10 @@ function init<T extends object>(config: TestBedConfig<T>): TestBed {
     { teardown: { destroyAfterEach: true } }
   );
 
+  const { inputs, ...testModuleMetaData } = config;
+
   testBed.configureTestingModule({
-    // we might need to massage this object but will just spread it's props here for now
-    ...config,
+    ...testModuleMetaData,
   });
 
   return testBed;
@@ -48,9 +47,12 @@ export function mount<T extends object>(
   const fixture = testBed.createComponent(component);
   let componentInstance: T = fixture.componentInstance;
 
-  config.inputs?.map((input) => {
-    componentInstance = Object.assign(componentInstance, input);
-  });
+  if (config?.inputs) {
+    Object.keys(config.inputs).map(input => {
+      componentInstance = Object.assign(componentInstance, input)
+    })
+  }
+
   fixture.detectChanges();
 
   return fixture;

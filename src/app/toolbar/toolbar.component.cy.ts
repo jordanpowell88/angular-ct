@@ -9,7 +9,7 @@ describe('ToolbarComponent', () => {
 
   it('should render a title with the title passed via prop', () => {
     const title = 'My Test Title';
-    const fixture = mount(ToolbarComponent, { inputs: [{ title }] });
+    const fixture = mount(ToolbarComponent, { inputs: { title }});
     cy.get('.toolbar span').contains(title);
   });
 
