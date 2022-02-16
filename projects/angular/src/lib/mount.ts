@@ -53,7 +53,6 @@ export function mount<T extends object>(
   }
 
   fixture.whenStable().then(() => {
-    console.log('I AM STABLE')
     // This needs to be set to true so that change detection is automatically detected
     // Not sure if there would be a use case to not support autoDetectChanges(true) 
     fixture.autoDetectChanges(true);

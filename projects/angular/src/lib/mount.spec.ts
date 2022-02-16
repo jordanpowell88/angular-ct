@@ -4,16 +4,18 @@ import { AngularModule } from './angular.module';
 import { mount } from './mount';
 
 describe('mount', () => {
-  let fixture: ComponentFixture<AngularComponent>;
-
-  beforeEach(() => {
-    fixture = mount(AngularComponent, { imports: [AngularModule] });
-  });
-
   it('returns a fixture', () => {
+    const fixture = mount(AngularComponent, { imports: [AngularModule]})
     expect(fixture).toBeInstanceOf(ComponentFixture);
   });
   it('should create the component', () => {
+    const fixture = mount(AngularComponent, { imports: [AngularModule]})
     expect(fixture.componentInstance).toBeInstanceOf(AngularComponent);
   });
+
+  it('adds inputs to componentInstance', () => {
+    const fixture = mount(AngularComponent, { inputs: { title: 'My Title' }, imports: [AngularModule]})
+    const component = fixture.componentInstance as AngularComponent;
+    expect(component.title).toEqual('My Title');
+  })
 });
