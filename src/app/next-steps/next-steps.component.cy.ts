@@ -21,4 +21,19 @@ describe('NextStepsComponent', () => {
   it('should have a terminal code block', () => {
     cy.get('pre').should('be.visible');
   });
+
+  it('should display the correct terminal command when clicking the matching button', () => {
+    cy.get('button').contains('New Component').click()
+    cy.get('pre').should('contain.text', 'ng generate component xyz');
+    cy.get('button').contains('Angular Material').click();
+    cy.get('pre').should('contain.text', 'ng add @angular/material');
+    cy.get('button').contains('Add PWA Support').click();
+    cy.get('pre').should('contain.text', 'ng add @angular/pwa');
+    cy.get('button').contains('Add Dependency').click();
+    cy.get('pre').should('contain.text', 'ng add _____');
+    cy.get('button').contains('Run and Watch Tests').click();
+    cy.get('pre').should('contain.text', 'ng test');
+    cy.get('button').contains('Build for Production').click();
+    cy.get('pre').should('contain.text', 'ng build');
+  })
 });

@@ -25,13 +25,13 @@ function init<T extends object>(config: TestBedConfig<T>): TestBed {
   testBed.initTestEnvironment(
     BrowserDynamicTestingModule,
     platformBrowserDynamicTesting(),
-    { teardown: { destroyAfterEach: true } }
   );
 
   const { inputs, ...testModuleMetaData } = config;
 
   testBed.configureTestingModule({
     ...testModuleMetaData,
+    teardown: { destroyAfterEach: true }
   });
 
   return testBed;
@@ -47,13 +47,17 @@ export function mount<T extends object>(
   const fixture = testBed.createComponent(component);
   let componentInstance: T = fixture.componentInstance;
 
+
   if (config?.inputs) {
-    Object.keys(config.inputs).map(input => {
-      componentInstance = Object.assign(componentInstance, input)
-    })
+    componentInstance = Object.assign(componentInstance, config.inputs);
   }
 
-  fixture.detectChanges();
+  fixture.whenStable().then(() => {
+    console.log('I AM STABLE')
+    // This needs to be set to true so that change detection is automatically detected
+    // Not sure if there would be a use case to not support autoDetectChanges(true) 
+    fixture.autoDetectChanges(true);
+  })
 
   return fixture;
 }
