@@ -12,6 +12,7 @@ import { CloudsComponent } from './clouds/clouds.component';
 import { NextStepsComponent } from './next-steps/next-steps.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { TestOutputButtonComponent } from './test-output-button/test-output-button.component';
+import { ObservablesComponent } from './observables/observables.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TestOutputButtonComponent } from './test-output-button/test-output-butt
     CloudsComponent,
     NextStepsComponent,
     ResourcesComponent,
-    TestOutputButtonComponent
+    TestOutputButtonComponent,
+    ObservablesComponent
   ],
   imports: [
     BrowserModule,
