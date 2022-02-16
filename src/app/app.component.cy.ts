@@ -51,4 +51,10 @@ describe('AppComponent', () => {
   it('should have a footer that says Love Angular', () => {
     cy.get('footer').contains('Love Angular');
   });
+
+  it('can click the child Button that updates state (triggers change detection)', () => {
+    cy.get('h3').contains('Total Clicks: 0');
+    cy.get('button').contains('Add +').click();
+    cy.get('h3').contains('Total Clicks: 1');
+  })
 });

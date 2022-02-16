@@ -11,6 +11,7 @@ import { RoundCardButtonsComponent } from './round-card-buttons/round-card-butto
 import { CloudsComponent } from './clouds/clouds.component';
 import { NextStepsComponent } from './next-steps/next-steps.component';
 import { ResourcesComponent } from './resources/resources.component';
+import { TestOutputButtonComponent } from './test-output-button/test-output-button.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ResourcesComponent } from './resources/resources.component';
     RoundCardButtonsComponent,
     CloudsComponent,
     NextStepsComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    TestOutputButtonComponent
   ],
   imports: [
     BrowserModule,
