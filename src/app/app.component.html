@@ -1,21 +1,14 @@
 <app-toolbar title="Angular CT Demo App"></app-toolbar>
 
 <div class="content" role="main">
-  <app-rocket [title]="title"></app-rocket>
+  <router-outlet></router-outlet>
+  
+  <!-- <app-test-output-button></app-test-output-button>
 
-  <app-resources></app-resources>
-
-  <app-next-steps></app-next-steps>
-
-  <app-round-card-buttons></app-round-card-buttons>
-
-  <app-test-output-button></app-test-output-button>
-
-  <app-observables></app-observables>
+  <app-observables></app-observables> -->
 
   <app-footer></app-footer>
 
   <app-clouds></app-clouds>
 </div>
 
-<router-outlet></router-outlet>

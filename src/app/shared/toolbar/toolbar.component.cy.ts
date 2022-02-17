@@ -1,4 +1,4 @@
-import { mount } from '../../../projects/angular/src/public-api';
+import { mount } from '../../../../projects/angular/src/public-api';
 import { ToolbarComponent } from './toolbar.component';
 
 describe('ToolbarComponent', () => {

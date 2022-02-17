@@ -1,4 +1,4 @@
-import { mount } from '../../../projects/angular/src/public-api';
+import { mount } from '../../../../projects/angular/src/public-api';
 import { RoundCardButtonsComponent } from './round-card-buttons.component';
 
 describe('RoundCardButtonsComponent', () => {

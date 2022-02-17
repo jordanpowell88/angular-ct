@@ -1,36 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { CardComponent } from './card/card.component';
-import { RocketComponent } from './rocket/rocket.component';
-import { FooterComponent } from './footer/footer.component';
-import { RoundCardButtonsComponent } from './round-card-buttons/round-card-buttons.component';
-import { CloudsComponent } from './clouds/clouds.component';
-import { NextStepsComponent } from './next-steps/next-steps.component';
-import { ResourcesComponent } from './resources/resources.component';
-import { TestOutputButtonComponent } from './test-output-button/test-output-button.component';
-import { ObservablesComponent } from './observables/observables.component';
-
+import { SharedModule } from './shared/shared.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent,
-    CardComponent,
-    RocketComponent,
-    FooterComponent,
-    RoundCardButtonsComponent,
-    CloudsComponent,
-    NextStepsComponent,
-    ResourcesComponent,
-    TestOutputButtonComponent,
-    ObservablesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { mount } from '../../../projects/angular/src/public-api';
+import { mount } from '../../../../projects/angular/src/public-api';
 import { ResourcesComponent } from './resources.component';
 
 describe('ResourcesComponent', () => {
