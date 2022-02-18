@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import * as webpackConfig from './webpack.config';
+import { devServer } from '../../projects/angular-dev-server/src/public-api';
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -22,13 +22,9 @@ module.exports = (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions)
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 
-  const { startDevServer } = require('@cypress/webpack-dev-server');
 
-  on('dev-server:start', (options) => {
-    return startDevServer({
-      options,
-      webpackConfig,
-    });
+  on('dev-server:start', (config) => {
+    return devServer(config)
   });
 
   return config;
