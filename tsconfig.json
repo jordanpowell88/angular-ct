@@ -6,6 +6,10 @@
       "angular": [
         "dist/angular/angular",
         "dist/angular"
+      ],
+      "angular-dev-server": [
+        "dist/angular-dev-server/angular-dev-server",
+        "dist/angular-dev-server"
       ]
     },
     "baseUrl": "./",
