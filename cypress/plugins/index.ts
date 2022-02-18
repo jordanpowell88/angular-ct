@@ -23,7 +23,7 @@ module.exports = (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions)
   // `config` is the resolved Cypress config
 
 
-  on('dev-server:start', (config) => {
+  on('dev-server:start', (config: Cypress.DevServerConfig) => {
     return devServer(config)
   });
 
