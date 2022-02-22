@@ -6,7 +6,9 @@ describe('ObservablesService', () => {
   let service: ObservablesService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [ObservablesService]
+    });
     service = TestBed.inject(ObservablesService);
   });
 

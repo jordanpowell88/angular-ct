@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ObservablesComponent } from './observables.component';
+import { ObservablesService } from './observables.service';
 
 describe('ObservablesComponent', () => {
   let component: ObservablesComponent;
@@ -8,7 +9,8 @@ describe('ObservablesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ObservablesComponent ]
+      declarations: [ ObservablesComponent ],
+      providers: [ObservablesService]
     })
     .compileComponents();
   });
