@@ -10,6 +10,13 @@ We first need to install the project dependencies:
 npm install
 ```
 
+Next let's add the following to our Cypress support file:
+
+```javascript
+// cypress/support/index.js
+import '../../projects/angular/src/lib/support';
+
+```
 
 The next thing is to configure the dev-server using the `angular-dev-server` package found in `[projects/angular-dev-server](projects/angular-dev-server/):
 

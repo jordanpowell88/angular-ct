@@ -1,9 +1,10 @@
 import { mount } from "../../../../projects/angular/src/public-api"
 import { ObservablesComponent } from "./observables.component"
+import { ObservablesService } from "./observables.service";
 
 describe('Observables', () => {
     beforeEach(() => {
-        mount(ObservablesComponent);
+        mount(ObservablesComponent, { providers: [ObservablesService]});
     })
 
     it('can mount', () => {
