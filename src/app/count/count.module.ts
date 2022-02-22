@@ -7,6 +7,7 @@ import { ObservablesComponent } from './observables/observables.component';
 import { CountStoreModule } from './count-store/count-store.module';
 import { NgrxCounterComponent } from './ngrx-counter/ngrx-counter.component';
 import { ObservablesService } from './observables/observables.service';
+import { OverridesComponent } from './overrides/overrides.component';
 
 
 
@@ -15,7 +16,8 @@ import { ObservablesService } from './observables/observables.service';
     CountComponent,
     TestOutputButtonComponent,
     ObservablesComponent,
-    NgrxCounterComponent
+    NgrxCounterComponent,
+    OverridesComponent
   ],
   providers: [ObservablesService],
   imports: [
