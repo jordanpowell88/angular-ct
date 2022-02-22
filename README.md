@@ -14,14 +14,14 @@ Next let's add the following to our Cypress support file:
 
 ```javascript
 // cypress/support/index.js
-import '../../projects/angular/src/lib/support';
+import '@cypress/angular/support';
 
 ```
 
 The next thing is to configure the dev-server using the `angular-dev-server` package found in `[projects/angular-dev-server](projects/angular-dev-server/):
 
 ```typescript
-import { devServer } from 'projects/angular-dev-server/src/public-api'
+import { devServer } from '@cypress/angular-dev-server'
 
 module.exports = (on: Cypress.PluginEvents, config: PluginConfigOptions) => {
 
@@ -38,7 +38,7 @@ Finally we can start creating Angular Component Tests directly in our applicatio
 ```typescript
 // app.component.cy.ts (located in the same directory as app.component.ts)
 
-import { mount } from 'projects/angular/src/public-api';
+import { mount } from '@cypress/angular';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -68,7 +68,7 @@ export class MyOtherComponent {
 ```
 
 ```typescript
-import { mount } from 'projects/angular/src/public-api';
+import { mount } from '@cypress/angular';
 import { MyOtherComponent } from './my-other.component.ts';
 import { MyOtherService } from 'services/my-other.service.ts';
 import { MyOtherModule } from './my-other.module.ts';
@@ -91,4 +91,3 @@ The final thing to do is just run Cypress!
 ```bash
 npx cypress open-ct
 ```
-(**Note**): There is a bug with the dev server currently where it has issues with `zone.js` and `zone-testing.js` deps in-between test runs. Refreshing the Cypress Runner with typically resolve this issue
