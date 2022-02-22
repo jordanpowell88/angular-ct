@@ -1,15 +1,19 @@
+import 'zone.js/testing';
 import { provideMockStore } from "@ngrx/store/testing"
 import { mount } from "../../../../projects/angular/src/public-api"
 import { NgrxCounterComponent } from "./ngrx-counter.component"
+import { selectCount } from '../count-store/count.selectors';
 
 describe('NgRxCounterComponent', () => {
     beforeEach(() => {
         mount(NgrxCounterComponent, {
-            overrides: {
-                set: { 
-                    providers: [provideMockStore()]
+            providers: [provideMockStore({
+                initialState: {
+                    count: {
+                        count: 0
+                    }
                 }
-            }
+            })]
         })
     })
     it('can mount', () => {

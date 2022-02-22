@@ -1,11 +1,3 @@
-import 'zone.js';
-
-/**
- * @hack fixes "Mocha has already been patched with Zone" error.
- */
-(globalThis as any)['Mocha']['__zone_patch__'] = false;
-import 'zone.js/testing';
-
 import { Component, Type } from '@angular/core';
 import {
   ComponentFixture,
@@ -32,7 +24,6 @@ function init<T extends object>(config: TestBedConfig<T>): TestBed {
   const testBed: TestBed = getTestBed();
 
   testBed.resetTestEnvironment();
-  testBed.resetTestingModule();
   testBed.initTestEnvironment(
     BrowserDynamicTestingModule,
     platformBrowserDynamicTesting(),

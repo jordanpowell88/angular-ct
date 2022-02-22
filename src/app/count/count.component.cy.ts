@@ -1,10 +1,11 @@
 import { provideMockStore } from "@ngrx/store/testing"
 import { mount } from "../../../projects/angular/src/public-api"
 import { CountComponent } from "./count.component"
+import { ObservablesService } from "./observables/observables.service"
 
 describe('CountComponent', () => {
     beforeEach(() => {
-        mount(CountComponent, { providers: [provideMockStore({})]})
+        mount(CountComponent, { providers: [ObservablesService, provideMockStore()]})
     })
 
     it('can click the child Button that updates state (triggers change detection)', () => {

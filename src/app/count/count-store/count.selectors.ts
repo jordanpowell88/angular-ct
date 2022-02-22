@@ -5,5 +5,5 @@ const countFeatureSelector = createFeatureSelector<CountState>(COUNT_FEATURE);
 
 export const selectCount = createSelector(
     countFeatureSelector,
-    state => state.count
+    state => state?.count
 )
