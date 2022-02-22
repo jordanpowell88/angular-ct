@@ -1,9 +1,6 @@
-import 'zone.js';
-import 'zone.js/testing';
 import { provideMockStore } from "@ngrx/store/testing"
 import { mount } from "../../../../projects/angular/src/public-api"
 import { NgrxCounterComponent } from "./ngrx-counter.component"
-import { initialState } from '../count-store/count.reducer';
 
 describe('NgRxCounterComponent', () => {
     beforeEach(() => {
