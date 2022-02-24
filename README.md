@@ -13,8 +13,8 @@ npm install
 Next let's add the following to our Cypress support file:
 
 ```javascript
-// cypress/support/index.js
-import '@cypress/angular/support'; // this locall path is ./projects/angular/src/lib/support
+// cypress/support/component.js
+import '../../projects/angular/src/lib/support'; 
 
 ```
 
@@ -24,7 +24,7 @@ The next thing is to configure the dev-server using the `angular-dev-server` pac
 // cypress.config.ts
 
 import { defineConfig } from 'cypress';
-import { devServer } from '@cypress/angular-dev-server' // the local path is ./projects/angular-dev-server/src/public_api
+import { devServer } from './projects/angular-dev-server/src/public_api';
 
 export default defineConfig({
     component: {
@@ -42,7 +42,7 @@ Finally we can start creating Angular Component Tests directly in our applicatio
 ```typescript
 // app.component.cy.ts (located in the same directory as app.component.ts)
 
-import { mount } from '@cypress/angular'; // the local path would be ./{rootDirectory}/projects/angular/src/public_api
+import { mount } from '../../projects/angular/src/public_api';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -72,7 +72,7 @@ export class MyOtherComponent {
 ```
 
 ```typescript
-import { mount } from '@cypress/angular'; // the local path would be ./{rootDirectory}/projects/angular/src/public_api
+import { mount } from '../../projects/angular/src/public_api'; 
 import { MyOtherComponent } from './my-other.component.ts';
 import { MyOtherService } from 'services/my-other.service.ts';
 import { MyOtherModule } from './my-other.module.ts';

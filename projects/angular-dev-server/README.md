@@ -1,24 +1,26 @@
-# AngularDevServer
+# Cypress Angular Dev Server
+This package is used as the dev server for [cypress-angular-component-testing](https://www.npmjs.com/package/cypress-angular-component-testing):
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name --project angular-dev-server` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project angular-dev-server`.
-> Note: Don't forget to add `--project angular-dev-server` or else it will be added to the default project in your `angular.json` file. 
+To install the package you need to first install it using:
 
-## Build
+```bash
+npm install cypress-angular-dev-server
+```
 
-Run `ng build angular-dev-server` to build the project. The build artifacts will be stored in the `dist/` directory.
+```typescript
+// cypress.config.ts
 
-## Publishing
+import { defineConfig } from 'cypress';
+import { devServer } from 'cypress-angular-dev-server' // the local path is ./projects/angular-dev-server/src/public_api
 
-After building your library with `ng build angular-dev-server`, go to the dist folder `cd dist/angular-dev-server` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test angular-dev-server` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+export default defineConfig({
+    component: {
+        devServer,
+        ...
+    },
+    ...
+})
+```
