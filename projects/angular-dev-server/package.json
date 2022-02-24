@@ -1,9 +1,11 @@
 {
-  "name": "angular-dev-server",
+  "name": "cypress-angular-dev-server",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0"
+    "@angular/core": "^12.2.0",
+    "@ngtools/webpack": ">=12.0.0",
+    "@cypress/webpack-dev-server": "^1.8.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"
