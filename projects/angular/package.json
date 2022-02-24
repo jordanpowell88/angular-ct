@@ -1,9 +1,10 @@
 {
-  "name": "angular",
-  "version": "0.0.1",
+  "name": "cypress-angular-component-testing",
+  "version": "0.0.1-beta.1",
   "peerDependencies": {
     "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0"
+    "@angular/core": "^12.2.0",
+    "@angular/platform-browser-dynamic": "^12.2.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

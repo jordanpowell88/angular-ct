@@ -1,6 +1,6 @@
 {
   "name": "angular-ct",
-  "version": "0.0.0",
+  "version": "0.0.1-beta.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -29,10 +29,10 @@
     "@angular/cli": "~12.2.16",
     "@angular/compiler-cli": "~12.2.0",
     "@cypress/webpack-dev-server": "^1.8.1",
-    "@ngtools/webpack": "^12.2.16",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
-    "cypress": "^9.5.0",
+    "@types/webpack-dev-server": "^3.11.3",
+    "cypress": "https://cdn.cypress.io/beta/npm/10.0.0/linux-x64/circle-10.0-release-1203e2ea1090213abe3d3b1c1698a114c1b2715c/cypress.tgz",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
