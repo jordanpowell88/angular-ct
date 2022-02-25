@@ -1,1 +1,1 @@
-import '../../projects/angular/src/lib/support'
+import '../../projects/angular/src/support'

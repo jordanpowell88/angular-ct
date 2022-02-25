@@ -12,7 +12,7 @@ import {
 export interface TestBedConfig<T extends object> extends TestModuleMetadata {
   // this extends the normal angular TestBed config
   // and allows us to pass component Input() props as part of the config object
-  inputs?: { [P in keyof T]: T[P] }
+  inputs?: Partial<{ [P in keyof T]: T[P] }>
 }
 
 function init<T extends object>(config: TestBedConfig<T>): TestBed {
