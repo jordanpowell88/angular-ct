@@ -1,13 +1,24 @@
 {
   "name": "cypress-angular-dev-server",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "peerDependencies": {
-    "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0",
-    "@ngtools/webpack": ">=12.0.0",
-    "@cypress/webpack-dev-server": "^1.8.1"
+    "@angular/common": ">=12",
+    "@angular/core": ">=12",
+    "@ngtools/webpack": ">=12",
+    "@cypress/webpack-dev-server": ">=1.8.1"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
-  }
+    "tslib": ">=2.3.0"
+  },
+  "homepage": "https://github.com/jordanpowell88/angular-ct#readme",
+  "author": "Jordan Powell",
+  "bugs": "https://github.com/jordanpowell88/angular-ct/issues",
+  "keywords": [
+    "angular",
+    "cypress",
+    "testing",
+    "component-testing",
+    "webpack",
+    "webpack-dev-server"
+  ]
 }
