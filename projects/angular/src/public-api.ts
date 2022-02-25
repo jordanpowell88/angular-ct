@@ -3,4 +3,4 @@
  */
 
 export { mount } from './lib/mount';
-export * from './lib/support'
+export * from './support'

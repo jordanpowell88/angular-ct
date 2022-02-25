@@ -14,4 +14,11 @@ describe('TestOutputButtonComponent', () => {
         cy.get('button').click();
         cy.get('h3').contains('Total Clicks: 1');
     })
+
+    it('emits the next value on click', () => {
+        const fixture = mount(TestOutputButtonComponent)
+        cy.spy(fixture.componentInstance.count, 'emit').as('countEmitted');
+        cy.get('button').click();
+        cy.get('@countEmitted').should('have.been.calledOnceWith', 1);
+    })
 })
