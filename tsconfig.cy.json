@@ -5,5 +5,5 @@
     "outDir": "./out-tsc/cy",
     "types": ["cypress"]
   },
-  "include": ["../../**/*.d.ts", "../../**/*.component.cy.ts"]
+  "include": ["../../**/*.d.ts", ".src/**/*.component.cy.ts"]
 }
