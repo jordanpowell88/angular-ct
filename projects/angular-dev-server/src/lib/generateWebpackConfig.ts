@@ -1,4 +1,3 @@
-import { WebpackConfigurationWithDevServer } from "@cypress/webpack-dev-server/dist/startServer";
 import { AngularWebpackPlugin } from "@ngtools/webpack";
 import * as fs from 'fs';
 import { Configuration } from 'webpack';
