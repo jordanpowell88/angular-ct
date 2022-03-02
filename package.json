@@ -29,6 +29,7 @@
     "@angular/cli": "~12.2.16",
     "@angular/compiler-cli": "~12.2.0",
     "@cypress/webpack-dev-server": "^1.8.1",
+    "@types/babel__core": "^7.1.18",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "@types/webpack-dev-server": "^3.11.3",
@@ -41,6 +42,7 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^12.1.1",
     "raw-loader": "^4.0.2",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "babel-loader":"^8.2.3"
   }
 }
