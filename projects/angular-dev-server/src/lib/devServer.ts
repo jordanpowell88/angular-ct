@@ -1,16 +1,20 @@
 import { ResolvedDevServerConfig, devServer as startDevServer } from "@cypress/webpack-dev-server";
 import { generateTsConfig } from "./generateWebpackConfig";
-import { webpackConfig } from "./webpack.config";
-
+import { getWebpackConfig } from "./webpack.config";
+import { dirSync } from 'tmp';
 
 export function devServer(cypressDevServerConfig: Cypress.DevServerConfig): Promise<ResolvedDevServerConfig> {
-    console.log(cypressDevServerConfig)
     const { config  } = cypressDevServerConfig;
     const { specPattern, projectRoot  } = config;
-    generateTsConfig(specPattern, projectRoot);
+    
+    // This creates a temporary directory used to store a tsconfig.cy.json file needed to construct the AngularWebpackPlugin
+    const { name: tempDir } = dirSync()
+
+    // This generates the tsconfig.cy.json file in the temporary directory from above
+    generateTsConfig(specPattern, projectRoot, tempDir);
     
     return startDevServer(
         cypressDevServerConfig,
-        { webpackConfig }
+        { webpackConfig: getWebpackConfig(tempDir) }
     )
 }

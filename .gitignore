@@ -47,6 +47,3 @@ Thumbs.db
 
 # cypress
 /cypress/videos
-
-# temp lib files
-tsconfig.cy.json

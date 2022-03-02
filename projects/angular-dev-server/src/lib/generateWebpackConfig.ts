@@ -1,20 +1,40 @@
 import * as fs from 'fs';
+import * as path from 'path';
 
 type SpecPattern = string | string[];
 
-const generateTsConfigContent = (specPattern: SpecPattern, projectRoot: string) => `
+const generateTsConfigContent = (specPattern: SpecPattern, projectRoot: string): string => {
+
+  const getFilePath = (fileName: string): string => path.join(projectRoot, fileName);
+
+  const getIncludePaths = (): string[] => {
+    const d = getFilePath('src/**/*.d.ts');
+
+    if (Array.isArray(specPattern)) {
+      return [d, ...specPattern.map(sp => getFilePath(sp))]
+    }
+
+    if (typeof specPattern === 'string') {
+      return [d, getFilePath(specPattern)]
+    }
+
+    return [d]
+  }
+  
+return `
 {
-  "extends": "${projectRoot}/tsconfig.json",
+  "extends": "${getFilePath('tsconfig.json')}",
   "compilerOptions": {
-    "outDir": "${projectRoot}/out-tsc/cy",
-    "types": ["${projectRoot}/node_modules/cypress"],
+    "outDir": "${getFilePath('out-tsc/cy')}",
+    "types": ["${getFilePath('node_modules/cypress')}"],
     "allowSyntheticDefaultImports": true
   },
-  "include": ["${projectRoot}/src/**/*.d.ts", "${projectRoot}/${specPattern}"]
+  "include": [${getIncludePaths().map(x => `"${x}"`)}]
 }
 `
+}
 
-export const generateTsConfig = (specPattern: SpecPattern, projectRoot: string): void => {
+export const generateTsConfig = (specPattern: SpecPattern, projectRoot: string, tempDir: string): void => {
   const tsconfigContent = generateTsConfigContent(specPattern, projectRoot);
-  fs.writeFileSync('/tmp/tsconfig.cy.json', tsconfigContent);
+  fs.writeFileSync(`${tempDir}/tsconfig.cy.json`, tsconfigContent);
 }

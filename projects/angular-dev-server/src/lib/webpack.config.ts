@@ -2,7 +2,7 @@ import { AngularWebpackPlugin } from "@ngtools/webpack";
 import { Configuration } from "webpack";
 import * as linkerPlugin from '@angular/compiler-cli/linker/babel';
 
-export const webpackConfig: Configuration = {
+export const getWebpackConfig = (tmpDir: string): Configuration => ({
     mode: 'development',
     module: {
       rules: [
@@ -32,7 +32,7 @@ export const webpackConfig: Configuration = {
     },
     plugins: [
         new AngularWebpackPlugin({
-            tsconfig: '/tmp/tsconfig.cy.json'
+            tsconfig: `${tmpDir}/tsconfig.cy.json`
         }),
     ],
-}
+})
