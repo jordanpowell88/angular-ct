@@ -2,8 +2,8 @@ import { mount } from "cypress-angular-component-testing"
 import { OverridesComponent } from "./overrides.component"
 
 describe('OverridesComponent', () => {
-    beforeEach(() => {
-        mount(OverridesComponent)
+    beforeEach(async () => {
+        await mount(OverridesComponent)
     });
 
     it('can mount', () => {

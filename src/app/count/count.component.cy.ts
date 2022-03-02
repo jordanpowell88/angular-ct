@@ -7,8 +7,8 @@ import { ObservablesService } from "./observables/observables.service"
 describe('CountComponent', () => {
     let store: MockStore;
 
-    beforeEach(() => {
-        mount(CountComponent, { providers: [ObservablesService, provideMockStore()]})
+    beforeEach(async() => {
+        await mount(CountComponent, { providers: [ObservablesService, provideMockStore()]})
 
         store = TestBed.inject(MockStore);
     })
