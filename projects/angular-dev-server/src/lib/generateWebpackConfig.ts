@@ -1,6 +1,7 @@
 import { AngularWebpackPlugin } from "@ngtools/webpack";
 import * as fs from 'fs';
 import { Configuration } from 'webpack';
+import linkerPlugin from '@angular/compiler-cli/linker/babel';
 
 type SpecPattern = string | string[];
 
@@ -24,16 +25,27 @@ const generateTsConfig = (specPattern: SpecPattern): void => {
 const webpackConfig: Configuration = {
     mode: 'development',
     module: {
-        rules: [
+      rules: [
         {
-            test: /\.[jt]sx?$/,
-            loader: '@ngtools/webpack',
+          test: /\.[jt]sx?$/,
+          loader: '@ngtools/webpack',
         },
         {
-            test: /(\.scss|\.sass)$/,
-            use: ['raw-loader', 'sass-loader'],
+          test: /(\.scss|\.sass)$/,
+          use: ['raw-loader', 'sass-loader'],
         },
-        ],
+        {
+          test: /\.m?js$/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              plugins: [linkerPlugin],
+              compact: false,
+              cacheDirectory: true
+            }
+          }
+        }
+      ],
     },
     resolve: {
         extensions: ['.ts', '.js'],
