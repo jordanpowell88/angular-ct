@@ -1,11 +1,13 @@
-import { ResolvedDevServerConfig, startDevServer } from "@cypress/webpack-dev-server";
-import generateWebpackConfig from "./webpack.config";
+import { ResolvedDevServerConfig, devServer as startDevServer } from "@cypress/webpack-dev-server";
+import generateWebpackConfig from "./generateWebpackConfig";
 
-export function devServer(options: Cypress.DevServerConfig, cypressConfig: { tsconfig: string }, ): Promise<ResolvedDevServerConfig> {
-    const webpackConfig = generateWebpackConfig('../../../../tsconfig.cy.json');
+export function devServer(cypressDevServerConfig: Cypress.DevServerConfig): Promise<ResolvedDevServerConfig> {
+    const { config  } = cypressDevServerConfig;
+    const { specPattern } = config;
+    const webpackConfig = generateWebpackConfig(specPattern);
     
-    return startDevServer({
-        options,
-        webpackConfig
-    })
+    return startDevServer(
+        cypressDevServerConfig,
+        { webpackConfig }
+    )
 }
