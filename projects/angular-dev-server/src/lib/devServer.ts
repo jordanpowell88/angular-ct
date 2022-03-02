@@ -1,6 +1,6 @@
 import { ResolvedDevServerConfig, devServer as startDevServer } from "@cypress/webpack-dev-server";
-import { generateTsConfig } from "./generateWebpackConfig";
-import { getWebpackConfig } from "./webpack.config";
+import { generateTsConfig } from "./generateTsConfig";
+import { getWebpackConfig } from "./getWebpackConfig";
 import { dirSync } from 'tmp';
 
 export function devServer(cypressDevServerConfig: Cypress.DevServerConfig): Promise<ResolvedDevServerConfig> {
