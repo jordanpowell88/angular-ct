@@ -1,10 +1,9 @@
 import { AngularWebpackPlugin } from "@ngtools/webpack"
-import * as linkerPlugin from '@angular/compiler-cli/linker/babel';
 import { getWebpackConfig } from "./getWebpackConfig";
 import { Configuration } from 'webpack';
-
 describe('getWebpackConfig', () => {
     it('should prepend the tmpDir to the tsconfig path and return the Webpack Configuration', () => {
+  
         // arrange
         const tmpDir = '/myTempDir/123456789/tmp'
         const expected: Configuration = {
@@ -19,17 +18,6 @@ describe('getWebpackConfig', () => {
                   test: /(\.scss|\.sass)$/,
                   use: ['raw-loader', 'sass-loader'],
                 },
-                {
-                  test: /\.m?js$/,
-                  use: {
-                    loader: 'babel-loader',
-                    options: {
-                      plugins: [linkerPlugin],
-                      compact: false,
-                      cacheDirectory: true
-                    }
-                  }
-                }
               ],
             },
             resolve: {

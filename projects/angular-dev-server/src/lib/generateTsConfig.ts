@@ -1,11 +1,11 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import { writeFileSync } from 'fs';
+import { join } from 'path';
 
 type SpecPattern = string | string[];
 
-const generateTsConfigContent = (specPattern: SpecPattern, projectRoot: string): string => {
+export const generateTsConfigContent = (specPattern: SpecPattern, projectRoot: string): string => {
 
-  const getFilePath = (fileName: string): string => path.join(projectRoot, fileName);
+  const getFilePath = (fileName: string): string => join(projectRoot, fileName);
 
   const getIncludePaths = (): string[] => {
     const d = getFilePath('src/**/*.d.ts');
@@ -36,5 +36,5 @@ return `
 
 export const generateTsConfig = (specPattern: SpecPattern, projectRoot: string, tempDir: string): void => {
   const tsconfigContent = generateTsConfigContent(specPattern, projectRoot);
-  fs.writeFileSync(`${tempDir}/tsconfig.cy.json`, tsconfigContent);
+  writeFileSync(`${tempDir}/tsconfig.cy.json`, tsconfigContent);
 }
