@@ -10,12 +10,14 @@ describe('OverridesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ OverridesComponent ],
-    }).overrideComponent(
-      OverridesComponent, {
-      set: { providers: [
-        { provide: OverridesService }
-      ]}
+      providers: [OverridesService]
     })
+    // }).overrideComponent(
+    //   OverridesComponent, {
+    //   set: { providers: [
+    //     { provide: OverridesService }
+    //   ]}
+    // })
     .compileComponents();
   });
 
