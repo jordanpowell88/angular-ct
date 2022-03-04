@@ -31,8 +31,6 @@ describe('NgRxCounterComponent', () => {
         cy.spy(store, 'dispatch').as('mockStoreSpy')
         cy.get('button').contains('Increment +').click();
         cy.get('@mockStoreSpy').should('have.been.calledWith', incrementCount())
-        store.setState({ count: { count: 100 }})
-        cy.get('h3').contains('NgRx Counter: 100');
     })
 
     it('can decrement the count by dispatching action and selectors updates using MockStore.setState', () => {
@@ -40,7 +38,5 @@ describe('NgRxCounterComponent', () => {
         cy.spy(store, 'dispatch').as('mockStoreSpy');
         cy.get('button').contains('Decrement -').click();
         cy.get('@mockStoreSpy').should('have.been.calledWith', decrementCount());
-        store.setState({ count: { count: -10 }})
-        cy.get('h3').contains('NgRx Counter: -10')
     })
 })
