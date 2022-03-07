@@ -1,9 +1,10 @@
 {
   "name": "cypress-angular-dev-server",
-  "version": "0.0.11",
+  "version": "0.0.14",
   "peerDependencies": {
     "@angular/common": ">=12",
     "@angular/core": ">=12",
+    "@angular/compiler-cli": ">=12",
     "@ngtools/webpack": ">=12",
     "@cypress/webpack-dev-server": ">=1.8.1"
   },

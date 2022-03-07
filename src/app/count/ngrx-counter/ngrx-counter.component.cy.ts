@@ -1,6 +1,6 @@
 import 'zone.js/testing';
 import { MockStore, provideMockStore } from "@ngrx/store/testing"
-import { mount } from "../../../../projects/angular/src/public-api"
+import { mount } from "cypress-angular-component-testing"
 import { NgrxCounterComponent } from "./ngrx-counter.component"
 import { selectCount } from '../count-store/count.selectors';
 import { TestBed } from '@angular/core/testing';

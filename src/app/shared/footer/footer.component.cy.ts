@@ -1,4 +1,4 @@
-import { mount } from '../../../../projects/angular/src/public-api';
+import { mount } from 'cypress-angular-component-testing';
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {

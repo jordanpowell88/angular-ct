@@ -10,7 +10,9 @@
       "angular-dev-server": [
         "dist/angular-dev-server/angular-dev-server",
         "dist/angular-dev-server"
-      ]
+      ],
+      "cypress-angular-dev-server": ["projects/angular-dev-server/src/public-api"],
+      "cypress-angular-component-testing": ["projects/angular/src/public-api"]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

@@ -1,4 +1,4 @@
-import { mount } from "../../../../projects/angular/src/public-api"
+import { mount } from "cypress-angular-component-testing"
 import { TestOutputButtonComponent } from "./test-output-button.component"
 
 describe('TestOutputButtonComponent', () => {
