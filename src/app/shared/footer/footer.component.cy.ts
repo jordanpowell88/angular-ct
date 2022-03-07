@@ -2,8 +2,8 @@ import { mount } from 'cypress-angular-component-testing';
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {
-  beforeEach(() => {
-    mount(FooterComponent);
+  beforeEach(async () => {
+    await mount(FooterComponent);
   });
 
   it('should render with Love Angular?', () => {

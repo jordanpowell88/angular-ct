@@ -4,8 +4,8 @@ import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 
 describe('AppComponent', () => {
-  beforeEach(() => {
-    mount(AppComponent, { imports: [AppModule, RouterTestingModule] });
+  beforeEach(async () => {
+    await mount(AppComponent, { imports: [AppModule, RouterTestingModule] });
   });
 
   it('can mount', () => {

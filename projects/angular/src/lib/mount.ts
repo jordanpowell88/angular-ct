@@ -34,13 +34,15 @@ function init<T extends object>(config: TestBedConfig<T>): TestBed {
   return testBed;
 }
 
-export function mount<T extends object>(
+export type MountResponse<T extends object> = { fixture: ComponentFixture<T>, testBed: TestBed, component: T }
+
+export async function mount<T extends object>(
   component: Type<T>,
-  config: TestBedConfig<T> = {}
-): ComponentFixture<T> {
+  config: TestBedConfig<T> = {},
+  autoDetectChanges = true
+): Promise<MountResponse<T>> {
   const testBed: TestBed = init(config);
 
-  testBed.compileComponents();
   const fixture = testBed.createComponent(component);
   let componentInstance: T = fixture.componentInstance;
 
@@ -49,11 +51,11 @@ export function mount<T extends object>(
     componentInstance = Object.assign(componentInstance, config.inputs);
   }
 
-  fixture.whenStable().then(() => {
-    // This needs to be set to true so that change detection is automatically detected
-    // Not sure if there would be a use case to not support autoDetectChanges(true) 
-    fixture.autoDetectChanges(true);
-  })
+  await fixture.whenStable();
 
-  return fixture;
+  // This needs to be set to true so that change detection is automatically detected
+  // Not sure if there would be a use case to not support autoDetectChanges(true) 
+  fixture.autoDetectChanges(autoDetectChanges);
+
+  return { fixture, testBed, component: componentInstance };
 }

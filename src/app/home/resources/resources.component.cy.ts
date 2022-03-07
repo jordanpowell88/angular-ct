@@ -2,8 +2,8 @@ import { mount } from 'cypress-angular-component-testing';
 import { ResourcesComponent } from './resources.component';
 
 describe('ResourcesComponent', () => {
-  beforeEach(() => {
-    mount(ResourcesComponent);
+  beforeEach(async () => {
+    await mount(ResourcesComponent);
   });
 
   it('renders component with title of Resources', () => {

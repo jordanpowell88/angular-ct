@@ -2,8 +2,8 @@ import { mount } from 'cypress-angular-component-testing';
 import { NextStepsComponent } from './next-steps.component';
 
 describe('NextStepsComponent', () => {
-  beforeEach(() => {
-    mount(NextStepsComponent);
+  beforeEach(async () => {
+    await mount(NextStepsComponent);
   });
 
   it('should have a title of Next Steps', () => {
