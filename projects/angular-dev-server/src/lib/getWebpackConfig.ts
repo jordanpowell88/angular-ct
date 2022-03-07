@@ -21,7 +21,7 @@ export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
             use: {
               loader: 'babel-loader',
               options: {
-                plugins: [linkerPlugin],
+                plugins: [linkerPlugin.default],
                 compact: false,
                 cacheDirectory: true,
               }
