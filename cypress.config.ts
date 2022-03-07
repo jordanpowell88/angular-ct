@@ -1,5 +1,5 @@
 import { defineConfig } from 'cypress';
-import { devServer } from './projects/angular-dev-server/src/public-api'
+import { devServer } from 'cypress-angular-dev-server';
 
 export default defineConfig({
   component: {

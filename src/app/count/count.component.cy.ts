@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing"
 import { MockStore, provideMockStore } from "@ngrx/store/testing"
-import { mount } from "../../../projects/angular/src/public-api"
+import { mount } from "cypress-angular-component-testing"
 import { CountComponent } from "./count.component"
 import { ObservablesService } from "./observables/observables.service"
 

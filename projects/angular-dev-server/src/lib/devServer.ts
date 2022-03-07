@@ -3,7 +3,7 @@ import { generateTsConfig } from "./generateTsConfig";
 import { getWebpackConfig } from "./getWebpackConfig";
 import { dirSync } from 'tmp';
 
-export function devServer(cypressDevServerConfig: Cypress.DevServerConfig): Promise<ResolvedDevServerConfig> {
+export async function devServer(cypressDevServerConfig: Cypress.DevServerConfig): Promise<ResolvedDevServerConfig> {
     const { config  } = cypressDevServerConfig;
     const { specPattern, projectRoot  } = config;
     
@@ -12,9 +12,11 @@ export function devServer(cypressDevServerConfig: Cypress.DevServerConfig): Prom
 
     // This generates the tsconfig.cy.json file in the temporary directory from above
     generateTsConfig(specPattern, projectRoot, tempDir);
+
+    const webpackConfig = await getWebpackConfig(tempDir);
     
     return startDevServer(
         cypressDevServerConfig,
-        { webpackConfig: getWebpackConfig(tempDir) }
+        { webpackConfig }
     )
 }

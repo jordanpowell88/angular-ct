@@ -1,4 +1,4 @@
-import { mount } from "../../../projects/angular/src/public-api"
+import { mount } from "cypress-angular-component-testing"
 import { HomeComponent } from "./home.component"
 
 describe('HomeComponent', () => {

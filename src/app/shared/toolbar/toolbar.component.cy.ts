@@ -1,5 +1,5 @@
 import { RouterTestingModule } from '@angular/router/testing';
-import { mount } from '../../../../projects/angular/src/public-api';
+import { mount } from 'cypress-angular-component-testing';
 import { ToolbarComponent } from './toolbar.component';
 
 describe('ToolbarComponent', () => {

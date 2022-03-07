@@ -1,4 +1,4 @@
-import { generateTsConfig, generateTsConfigContent } from "./generateTsConfig";
+import { generateTsConfigContent } from "./generateTsConfig";
 
 describe('generateTsConfig', () => {
   const projectRoot = '/blah/blah2';
