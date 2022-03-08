@@ -1,12 +1,8 @@
 <app-toolbar title="Angular CT Demo App"></app-toolbar>
 
-<div class="content" role="main">
+<div *ngIf="show" class="content" role="main">
   <router-outlet></router-outlet>
   
-  <!-- <app-test-output-button></app-test-output-button>
-
-  <app-observables></app-observables> -->
-
   <app-footer></app-footer>
 
   <app-clouds></app-clouds>

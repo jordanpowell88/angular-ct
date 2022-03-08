@@ -1,7 +1,6 @@
 import { Type } from '@angular/core';
 import {
-  ComponentFixture,
-  getTestBed, TestBed,
+  ComponentFixture, getTestBed, TestBed,
   TestModuleMetadata
 } from '@angular/core/testing';
 import {
@@ -15,22 +14,24 @@ export interface TestBedConfig<T extends object> extends TestModuleMetadata {
   inputs?: Partial<{ [P in keyof T]: T[P] }>
 }
 
-function init<T extends object>(config: TestBedConfig<T>): TestBed {
+function init<T extends object>(component: Type<T>, config: TestBedConfig<T>): TestBed {
   const testBed: TestBed = getTestBed();
-
+  
   testBed.resetTestEnvironment();
   testBed.initTestEnvironment(
     BrowserDynamicTestingModule,
     platformBrowserDynamicTesting(),
   );
-
+    
   const { inputs, ...testModuleMetaData } = config;
-
+  
+  testModuleMetaData.declarations?.push(component);
+  
   testBed.configureTestingModule({
     ...testModuleMetaData,
     teardown: { destroyAfterEach: true }
   });
-
+    
   return testBed;
 }
 
@@ -41,20 +42,20 @@ export async function mount<T extends object>(
   config: TestBedConfig<T> = {},
   autoDetectChanges = true
 ): Promise<MountResponse<T>> {
-  const testBed: TestBed = init(config);
+  const testBed: TestBed = init(component, config);
 
   const fixture = testBed.createComponent(component);
+  await testBed.compileComponents();
   let componentInstance: T = fixture.componentInstance;
 
 
   if (config?.inputs) {
+    // Cypress.log({ displayName: 'Component Inputs()', message: [config.inputs]})
     componentInstance = Object.assign(componentInstance, config.inputs);
   }
 
   await fixture.whenStable();
 
-  // This needs to be set to true so that change detection is automatically detected
-  // Not sure if there would be a use case to not support autoDetectChanges(true) 
   fixture.autoDetectChanges(autoDetectChanges);
 
   return { fixture, testBed, component: componentInstance };

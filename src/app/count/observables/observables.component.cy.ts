@@ -1,3 +1,4 @@
+import { fakeAsync, tick } from "@angular/core/testing";
 import { mount } from "cypress-angular-component-testing";
 import { MountResponse } from "projects/angular/src/lib/mount";
 import { filter } from "rxjs/operators";
@@ -24,11 +25,11 @@ describe('Observables', () => {
         cy.get('h3').contains('Observable Service Count: 1');
     })
 
-    it('can decrement the count by clicking the subtract button which updates the observables next value in the service and it renders the new value in the component', () => {
+    it('can decrement the count by clicking the subtract button which updates the observables next value in the service and it renders the new value in the component', fakeAsync(() => {
         cy.get('h3').contains('Observable Service Count: 0');
         cy.get('button').contains('Subtract -').click();
         response.component.count$.pipe(filter(val => val < 0)).subscribe(() => response.fixture.detectChanges())
-        response.fixture.detectChanges();
+        tick()
         cy.get('h3').contains('Observable Service Count: -1')   
-    })
+    }))
 })
