@@ -2,5 +2,5 @@
  * Public API Surface of angular
  */
 
-export { mount } from './lib/mount';
+export { mount, MountResponse } from './lib/mount';
 export * from './support'

@@ -1,6 +1,6 @@
 {
   "name": "cypress-angular-component-testing",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "peerDependencies": {
     "@angular/common": ">=12",
     "@angular/core": ">=12",
