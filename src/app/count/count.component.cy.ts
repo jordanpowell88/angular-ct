@@ -2,13 +2,21 @@ import { TestBed } from "@angular/core/testing"
 import { MockStore, provideMockStore } from "@ngrx/store/testing"
 import { mount } from "cypress-angular-component-testing"
 import { CountComponent } from "./count.component"
+import { CountModule } from "./count.module"
+import { NgrxCounterComponent } from "./ngrx-counter/ngrx-counter.component"
+import { ObservablesComponent } from "./observables/observables.component"
 import { ObservablesService } from "./observables/observables.service"
+import { OverridesComponent } from "./overrides/overrides.component"
+import { TestOutputButtonComponent } from "./test-output-button/test-output-button.component"
 
 describe('CountComponent', () => {
     let store: MockStore;
 
     beforeEach(async() => {
-        await mount(CountComponent, { providers: [ObservablesService, provideMockStore()]})
+        await mount(CountComponent, {
+            declarations: [TestOutputButtonComponent, ObservablesComponent, NgrxCounterComponent, OverridesComponent],
+            providers: [ObservablesService, provideMockStore()]
+        })
 
         store = TestBed.inject(MockStore);
     })

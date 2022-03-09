@@ -1,9 +1,12 @@
 import { mount } from "cypress-angular-component-testing"
 import { HomeComponent } from "./home.component"
+import { HomeModule } from "./home.module"
 
 describe('HomeComponent', () => {
     beforeEach(async () => {
-        await mount(HomeComponent)
+        await mount(HomeComponent, {
+          imports: [HomeModule]
+        })
     })
 
     it('should render the child components', () => {
