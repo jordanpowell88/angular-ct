@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Type } from '@angular/core';
 import {
   ComponentFixture, getTestBed, TestBed,
@@ -25,7 +26,14 @@ function init<T extends object>(component: Type<T>, config: TestBedConfig<T>): T
     
   const { inputs, ...testModuleMetaData } = config;
   
+  if (!testModuleMetaData.declarations) {
+    testModuleMetaData.declarations = [];
+  }
+
+  console.log(testModuleMetaData);
+
   testModuleMetaData.declarations?.push(component);
+  testModuleMetaData.declarations?.push(AsyncPipe)
   
   testBed.configureTestingModule({
     ...testModuleMetaData,

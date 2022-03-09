@@ -8,17 +8,15 @@ export const generateTsConfigContent = (specPattern: SpecPattern, projectRoot: s
   const getFilePath = (fileName: string): string => join(projectRoot, fileName);
 
   const getIncludePaths = (): string[] => {
-    const d = getFilePath('src/**/*.d.ts');
-
     if (Array.isArray(specPattern)) {
-      return [d, ...specPattern.map(sp => getFilePath(sp))]
+      return [...specPattern.map(sp => getFilePath(sp))]
     }
 
     if (typeof specPattern === 'string') {
-      return [d, getFilePath(specPattern)]
+      return [getFilePath(specPattern)]
     }
 
-    return [d]
+    return []
   }
   
 return `
