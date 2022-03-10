@@ -3,8 +3,8 @@ import { HomeComponent } from "./home.component"
 import { HomeModule } from "./home.module"
 
 describe('HomeComponent', () => {
-    beforeEach(async () => {
-        await mount(HomeComponent, {
+    beforeEach(() => {
+        mount(HomeComponent, {
           imports: [HomeModule]
         })
     })
@@ -14,6 +14,7 @@ describe('HomeComponent', () => {
         cy.get('app-resources').should('be.visible');
         cy.get('app-next-steps').should('be.visible');
         cy.get('app-round-card-buttons').should('be.visible');
+        cy.get('app-svg').should('be.visible');
       });
     
       it('should have a Resources title', () => {

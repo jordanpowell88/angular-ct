@@ -1,9 +1,12 @@
 import { mount } from 'cypress-angular-component-testing';
+import { CardComponent } from '../card/card.component';
 import { ResourcesComponent } from './resources.component';
 
 describe('ResourcesComponent', () => {
-  beforeEach(async () => {
-    await mount(ResourcesComponent);
+  beforeEach(() => {
+    mount(ResourcesComponent, {
+      declarations: [CardComponent]
+    });
   });
 
   it('renders component with title of Resources', () => {

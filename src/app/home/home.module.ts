@@ -7,6 +7,7 @@ import { RocketComponent } from './rocket/rocket.component';
 import { RoundCardButtonsComponent } from './round-card-buttons/round-card-buttons.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { SvgComponent } from './svg/svg.component';
 
 
 
@@ -18,6 +19,7 @@ import { HomeRoutingModule } from './home-routing.module';
     NextStepsComponent,
     ResourcesComponent,
     HomeComponent,
+    SvgComponent,
   ],
   imports: [
     CommonModule,

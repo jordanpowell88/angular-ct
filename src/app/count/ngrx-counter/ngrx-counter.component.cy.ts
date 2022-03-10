@@ -14,8 +14,8 @@ describe('NgRxCounterComponent', () => {
 
     let store: MockStore;
 
-    beforeEach(async () => {
-        response = await mount(NgrxCounterComponent, {
+    beforeEach(() => {
+        response = mount(NgrxCounterComponent, {
             providers: [provideMockStore({ initialState })]
         })
 

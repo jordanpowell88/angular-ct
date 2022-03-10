@@ -17,6 +17,14 @@ export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
             use: ['raw-loader', 'sass-loader'],
           },
           {
+            test: /\.css$/,
+            loader: 'raw-loader',
+          },
+          {
+            test: /\.html$/,
+            loader: 'raw-loader'
+          },
+          {
             test: /\.m?js$/,
             use: {
               loader: 'babel-loader',

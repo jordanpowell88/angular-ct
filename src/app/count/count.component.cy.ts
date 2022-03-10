@@ -12,8 +12,8 @@ import { TestOutputButtonComponent } from "./test-output-button/test-output-butt
 describe('CountComponent', () => {
     let store: MockStore;
 
-    beforeEach(async() => {
-        await mount(CountComponent, {
+    beforeEach(() => {
+        mount(CountComponent, {
             declarations: [TestOutputButtonComponent, ObservablesComponent, NgrxCounterComponent, OverridesComponent],
             providers: [ObservablesService, provideMockStore()]
         })
