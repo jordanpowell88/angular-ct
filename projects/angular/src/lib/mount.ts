@@ -1,7 +1,8 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Type } from '@angular/core';
 import {
   ComponentFixture, getTestBed, TestBed,
+  TestComponentRenderer,
   TestModuleMetadata
 } from '@angular/core/testing';
 import {
@@ -15,56 +16,77 @@ export interface TestBedConfig<T extends object> extends TestModuleMetadata {
   inputs?: Partial<{ [P in keyof T]: T[P] }>
 }
 
-function init<T extends object>(component: Type<T>, config: TestBedConfig<T>): TestBed {
+export type MountResponse<T extends object> = { fixture: ComponentFixture<T>, testBed: TestBed, component: T }
+
+export function bootstrapModule<T extends object>(component: Type<T>, config: TestBedConfig<T>): TestBedConfig<T> {
+  const { inputs, ...testModuleMetaData } = config;
+
+  if (!testModuleMetaData.declarations) {
+    testModuleMetaData.declarations = []
+  }
+
+  if (!testModuleMetaData.imports) {
+    testModuleMetaData.imports = []
+  }
+
+
+  testModuleMetaData.declarations.push(component)
+  testModuleMetaData.imports.push(CommonModule);
+  return testModuleMetaData;
+}
+
+function initTestBed<T extends object>(component: Type<T>, config: TestBedConfig<T>): TestBed {
   const testBed: TestBed = getTestBed();
   
   testBed.resetTestEnvironment();
   testBed.initTestEnvironment(
     BrowserDynamicTestingModule,
-    platformBrowserDynamicTesting(),
+    platformBrowserDynamicTesting()
   );
     
-  const { inputs, ...testModuleMetaData } = config;
-  
-  if (!testModuleMetaData.declarations) {
-    testModuleMetaData.declarations = [];
-  }
-
-  console.log(testModuleMetaData);
-
-  testModuleMetaData.declarations?.push(component);
-  testModuleMetaData.declarations?.push(AsyncPipe)
-  
   testBed.configureTestingModule({
-    ...testModuleMetaData,
+    ...bootstrapModule(component, config),
     teardown: { destroyAfterEach: true }
   });
     
   return testBed;
 }
 
-export type MountResponse<T extends object> = { fixture: ComponentFixture<T>, testBed: TestBed, component: T }
+export function setupFixture<T extends object>(component: Type<T>, testBed: TestBed, autoDetectChanges: boolean): ComponentFixture<T> {
+  const fixture = testBed.createComponent(component)
+  
+  fixture.whenStable().then(() => {
+    fixture.autoDetectChanges(autoDetectChanges)
+  })
+  
+  return fixture;
+}
 
-export async function mount<T extends object>(
+export function setupComponent<T extends object>(config: TestBedConfig<T>, fixture: ComponentFixture<T>): T {
+  let component: T = fixture.componentInstance;
+
+  if (config?.inputs) {
+    component = Object.assign(component, config.inputs)
+  }
+
+  return component;
+}
+
+
+export function mount<T extends object>(
   component: Type<T>,
   config: TestBedConfig<T> = {},
   autoDetectChanges = true
-): Promise<MountResponse<T>> {
-  const testBed: TestBed = init(component, config);
+): MountResponse<T> {
+  const testBed: TestBed = initTestBed(component, config);
 
-  const fixture = testBed.createComponent(component);
-  await testBed.compileComponents();
-  let componentInstance: T = fixture.componentInstance;
+  const fixture = setupFixture(component, testBed, autoDetectChanges);
 
+  testBed.compileComponents();
 
-  if (config?.inputs) {
-    // Cypress.log({ displayName: 'Component Inputs()', message: [config.inputs]})
-    componentInstance = Object.assign(componentInstance, config.inputs);
-  }
-
-  await fixture.whenStable();
-
-  fixture.autoDetectChanges(autoDetectChanges);
-
-  return { fixture, testBed, component: componentInstance };
+  return {
+    fixture,
+    testBed,
+    component: setupComponent(config, fixture)
+  };
 }

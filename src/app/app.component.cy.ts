@@ -6,9 +6,10 @@ import { AppModule } from './app.module';
 describe('AppComponent', () => {
   let response: MountResponse<AppComponent>;
 
-  beforeEach(async () => {
-    const config = { imports: [AppModule, RouterTestingModule] }
-    response = await mount(AppComponent, config);
+  beforeEach(() => {
+    response = mount(AppComponent, {
+      imports: [AppModule, RouterTestingModule]
+    });
   });
 
   it('can mount', () => {

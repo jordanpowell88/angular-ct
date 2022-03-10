@@ -21,8 +21,8 @@ export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
             loader: 'raw-loader',
           },
           {
-            test: /\.svg$/,
-            use: ['@svgr/webpack'],
+            test: /\.html$/,
+            loader: 'raw-loader'
           },
           {
             test: /\.m?js$/,

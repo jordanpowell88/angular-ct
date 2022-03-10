@@ -5,8 +5,8 @@ import { ParentComponent } from "./parent.component"
 describe('ParentComponent', () => {
     let response: MountResponse<ParentComponent>;
 
-    beforeEach(async() => {
-        response = await mount(ParentComponent, { declarations: [GetterComponent]})
+    beforeEach(() => {
+        response = mount(ParentComponent, { declarations: [GetterComponent]})
     })
 
     it('can mount', () => {

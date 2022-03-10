@@ -4,8 +4,8 @@ import { SvgComponent } from "./svg.component"
 describe('SvgComponent', () => {
     let response: MountResponse<SvgComponent>;
 
-    beforeEach(async() => {
-        response = await mount(SvgComponent);
+    beforeEach(() => {
+        response = mount(SvgComponent);
     })
 
     it('can mount', () => {
