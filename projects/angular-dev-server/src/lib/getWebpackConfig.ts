@@ -2,7 +2,7 @@ import { AngularWebpackPlugin } from "@ngtools/webpack";
 import { Configuration } from "webpack";
 
 export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
-  const linkerPlugin = await import('@angular/compiler-cli/linker/babel');
+  // const linkerPlugin = await import('@angular/compiler-cli/linker/babel');
 
   return {
       mode: 'development',
@@ -24,17 +24,17 @@ export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
             test: /\.html$/,
             loader: 'raw-loader'
           },
-          {
-            test: /\.m?js$/,
-            use: {
-              loader: 'babel-loader',
-              options: {
-                plugins: [linkerPlugin.default],
-                compact: false,
-                cacheDirectory: true,
-              }
-            }
-          }
+          // {
+          //   test: /\.m?js$/,
+          //   use: {
+          //     loader: 'babel-loader',
+          //     options: {
+          //       plugins: [linkerPlugin.default],
+          //       compact: false,
+          //       cacheDirectory: true,
+          //     }
+          //   }
+          // }
         ],
       },
       resolve: {
