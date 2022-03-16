@@ -1,6 +1,6 @@
 # AngularCT
 
-This project is used to do Component Testing with Angular and Cypress 9. 
+This project is used to do Component Testing with Angular 12 and Cypress 10
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ The next thing is to configure the dev-server using the `angular-dev-server` pac
 // cypress.config.ts
 
 import { defineConfig } from 'cypress';
-import { devServer } from './projects/angular-dev-server/src/public_api';
+import { devServer } from 'cypress-angular-dev-server';
 
 export default defineConfig({
     component: {
@@ -42,7 +42,7 @@ Finally we can start creating Angular Component Tests directly in our applicatio
 ```typescript
 // app.component.cy.ts (located in the same directory as app.component.ts)
 
-import { mount } from '../../projects/angular/src/public_api';
+import { mount } from 'cypress-angular-component-testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -72,7 +72,7 @@ export class MyOtherComponent {
 ```
 
 ```typescript
-import { mount } from '../../projects/angular/src/public_api'; 
+import { mount } from 'cypress-angular-component-testing'; 
 import { MyOtherComponent } from './my-other.component.ts';
 import { MyOtherService } from 'services/my-other.service.ts';
 import { MyOtherModule } from './my-other.module.ts';
