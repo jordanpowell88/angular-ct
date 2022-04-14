@@ -14,7 +14,7 @@ Next let's add the following to our Cypress support file:
 
 ```javascript
 // cypress/support/component.js
-import '../../projects/angular/src/lib/support'; 
+import 'cypress-angular-component-testing/support';
 
 ```
 

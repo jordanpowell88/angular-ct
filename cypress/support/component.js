@@ -1,1 +1,1 @@
-import '../../projects/angular/src/support'
+import 'cypress-angular-component-testing/support';
