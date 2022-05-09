@@ -24,17 +24,6 @@ export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
             test: /\.html$/,
             loader: 'raw-loader'
           },
-          // {
-          //   test: /\.m?js$/,
-          //   use: {
-          //     loader: 'babel-loader',
-          //     options: {
-          //       plugins: [linkerPlugin.default],
-          //       compact: false,
-          //       cacheDirectory: true,
-          //     }
-          //   }
-          // }
         ],
       },
       resolve: {
@@ -42,8 +31,7 @@ export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
       },
       plugins: [
           new AngularWebpackPlugin({
-              tsconfig: `${tmpDir}/tsconfig.cy.json`,
-              jitMode: true
+              tsconfig: `${tmpDir}/tsconfig.cy.json`
           }),
       ],
     }
