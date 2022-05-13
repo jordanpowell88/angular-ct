@@ -7,8 +7,9 @@ describe('OverridesService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [OverridesService]
-    });
+    providers: [OverridesService],
+    teardown: { destroyAfterEach: false }
+});
     service = TestBed.inject(OverridesService);
   });
 

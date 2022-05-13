@@ -9,9 +9,10 @@ describe('ObservablesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ObservablesComponent ],
-      providers: [ObservablesService]
-    })
+    declarations: [ObservablesComponent],
+    providers: [ObservablesService],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

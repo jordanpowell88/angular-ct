@@ -16,9 +16,10 @@ describe('CountComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CountComponent, NgrxCounterComponent, ObservablesComponent, OverridesComponent, TestOutputButtonComponent],
-      providers: [provideMockStore({ initialState }), ObservablesService]
-    })
+    declarations: [CountComponent, NgrxCounterComponent, ObservablesComponent, OverridesComponent, TestOutputButtonComponent],
+    providers: [provideMockStore({ initialState }), ObservablesService],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

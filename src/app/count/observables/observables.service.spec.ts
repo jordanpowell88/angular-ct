@@ -7,8 +7,9 @@ describe('ObservablesService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ObservablesService]
-    });
+    providers: [ObservablesService],
+    teardown: { destroyAfterEach: false }
+});
     service = TestBed.inject(ObservablesService);
   });
 

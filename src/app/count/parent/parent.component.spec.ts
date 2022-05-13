@@ -9,8 +9,9 @@ describe('ParentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParentComponent, GetterComponent ]
-    })
+    declarations: [ParentComponent, GetterComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

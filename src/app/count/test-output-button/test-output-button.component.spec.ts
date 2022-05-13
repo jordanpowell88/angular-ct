@@ -8,8 +8,9 @@ describe('TestOutputButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TestOutputButtonComponent ]
-    })
+    declarations: [TestOutputButtonComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

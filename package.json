@@ -11,14 +11,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~12.2.0",
-    "@angular/common": "~12.2.0",
-    "@angular/compiler": "~12.2.0",
-    "@angular/core": "~12.2.0",
-    "@angular/forms": "~12.2.0",
-    "@angular/platform-browser": "~12.2.0",
-    "@angular/platform-browser-dynamic": "~12.2.0",
-    "@angular/router": "~12.2.0",
+    "@angular/animations": "~13.3.8",
+    "@angular/common": "~13.3.8",
+    "@angular/compiler": "~13.3.8",
+    "@angular/core": "~13.3.8",
+    "@angular/forms": "~13.3.8",
+    "@angular/platform-browser": "~13.3.8",
+    "@angular/platform-browser-dynamic": "~13.3.8",
+    "@angular/router": "~13.3.8",
     "@ngrx/store": "^12.5.1",
     "@ngrx/store-devtools": "^12.5.1",
     "rxjs": "~6.6.0",
@@ -35,7 +35,7 @@
     "@angular-eslint/schematics": "12.7.0",
     "@angular-eslint/template-parser": "12.7.0",
     "@angular/cli": "~12.2.16",
-    "@angular/compiler-cli": "~12.2.0",
+    "@angular/compiler-cli": "~13.3.8",
     "@briebug/jest-schematic": "^4.0.0",
     "@cypress/webpack-dev-server": "^1.8.2",
     "@types/babel__core": "^7.1.18",
@@ -52,6 +52,6 @@
     "jest-preset-angular": "^11.1.1",
     "ng-packagr": "^12.1.1",
     "raw-loader": "^4.0.2",
-    "typescript": "~4.3.5"
+    "typescript": "~4.6.4"
   }
 }

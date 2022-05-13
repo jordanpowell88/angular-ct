@@ -9,8 +9,9 @@ describe('ResourcesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResourcesComponent, CardComponent ]
-    })
+    declarations: [ResourcesComponent, CardComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

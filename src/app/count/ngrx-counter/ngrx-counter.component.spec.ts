@@ -8,9 +8,10 @@ describe('NgrxCounterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgrxCounterComponent ],
-      providers: [provideMockStore()]
-    })
+    declarations: [NgrxCounterComponent],
+    providers: [provideMockStore()],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 
