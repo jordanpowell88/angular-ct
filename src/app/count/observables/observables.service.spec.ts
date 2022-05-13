@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { take } from 'rxjs/operators';
+import { take } from 'rxjs';
 import { ObservablesService } from './observables.service';
 
 describe('ObservablesService', () => {
