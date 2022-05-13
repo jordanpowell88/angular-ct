@@ -38,7 +38,6 @@
     "@angular/compiler-cli": "~12.2.0",
     "@briebug/jest-schematic": "^4.0.0",
     "@cypress/webpack-dev-server": "^1.8.2",
-    "@nrwl/workspace": "^13.10.1",
     "@types/babel__core": "^7.1.18",
     "@types/jest": "latest",
     "@types/node": "^12.11.1",
