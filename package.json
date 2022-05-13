@@ -21,7 +21,7 @@
     "@angular/router": "~13.3.8",
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",
-    "rxjs": "~6.6.0",
+    "rxjs": "~7.5.5",
     "tmp": "^0.2.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
