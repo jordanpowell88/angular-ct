@@ -1,6 +1,6 @@
 # AngularCT
 
-This project is used to do Component Testing with Angular 12 and Cypress 10
+This project is used to do Component Testing with Angular 12+ and Cypress 10
 
 ## Getting Started
 
