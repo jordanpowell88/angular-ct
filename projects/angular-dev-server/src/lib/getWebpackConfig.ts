@@ -2,8 +2,6 @@ import { AngularWebpackPlugin } from "@ngtools/webpack";
 import { Configuration } from "webpack";
 
 export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
-  // const linkerPlugin = await import('@angular/compiler-cli/linker/babel');
-
   return {
       mode: 'development',
       module: {
@@ -23,7 +21,19 @@ export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
           {
             test: /\.html$/,
             loader: 'raw-loader'
-          },
+          },         
+          { // Angular linker needed to link partial-ivy code
+            // See https://angular.io/guide/creating-libraries#consuming-partial-ivy-code-outside-the-angular-cli
+            test: /\.m?js$/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                plugins: ['@angular/compiler-cli/linker/babel'],
+                compact: false,
+                cacheDirectory: true
+              }
+            }
+          }
         ],
       },
       resolve: {

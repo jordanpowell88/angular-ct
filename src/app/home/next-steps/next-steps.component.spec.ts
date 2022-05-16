@@ -8,8 +8,9 @@ describe('NextStepsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NextStepsComponent ]
-    })
+    declarations: [NextStepsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

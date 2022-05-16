@@ -41,7 +41,9 @@ function initTestBed<T extends object>(component: Type<T>, config: TestBedConfig
   testBed.resetTestEnvironment();
   testBed.initTestEnvironment(
     BrowserDynamicTestingModule,
-    platformBrowserDynamicTesting()
+    platformBrowserDynamicTesting(), {
+    teardown: { destroyAfterEach: false }
+}
   );
     
   testBed.configureTestingModule({

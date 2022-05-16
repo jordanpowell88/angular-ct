@@ -8,8 +8,9 @@ describe('RoundCardButtonsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoundCardButtonsComponent ]
-    })
+    declarations: [RoundCardButtonsComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

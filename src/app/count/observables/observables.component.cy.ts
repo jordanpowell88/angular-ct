@@ -1,7 +1,7 @@
 import { fakeAsync, tick } from "@angular/core/testing";
 import { mount } from "cypress-angular-component-testing";
 import { MountResponse } from "projects/angular/src/lib/mount";
-import { filter, take } from "rxjs/operators";
+import { filter, take } from "rxjs";
 import { ObservablesComponent } from "./observables.component";
 import { ObservablesService } from "./observables.service";
 

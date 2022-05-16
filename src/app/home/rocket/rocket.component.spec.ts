@@ -8,8 +8,9 @@ describe('RocketComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RocketComponent ]
-    })
+    declarations: [RocketComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

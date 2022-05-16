@@ -8,8 +8,9 @@ describe('GetterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GetterComponent ]
-    })
+    declarations: [GetterComponent],
+    teardown: { destroyAfterEach: false }
+})
     .compileComponents();
   });
 

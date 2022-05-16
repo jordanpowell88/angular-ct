@@ -8,16 +8,17 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
+    imports: [
         RouterTestingModule
-      ],
-      declarations: [
+    ],
+    declarations: [
         AppComponent,
         ToolbarComponent,
         FooterComponent,
         CloudsComponent
-      ],
-    }).compileComponents();
+    ],
+    teardown: { destroyAfterEach: false }
+}).compileComponents();
   });
 
   it('should create the app', () => {
