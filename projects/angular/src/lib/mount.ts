@@ -1,9 +1,7 @@
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Type } from '@angular/core';
 import {
-  ComponentFixture, getTestBed, TestBed,
-  TestComponentRenderer,
-  TestModuleMetadata
+  ComponentFixture, getTestBed, TestBed, TestModuleMetadata
 } from '@angular/core/testing';
 import {
   BrowserDynamicTestingModule,
