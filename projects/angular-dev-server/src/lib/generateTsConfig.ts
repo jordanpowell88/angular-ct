@@ -3,17 +3,20 @@ import { join } from 'path';
 
 type SpecPattern = string | string[];
 
-export const generateTsConfigContent = (specPattern: SpecPattern, projectRoot: string): string => {
 
+export const generateTsConfigContent = (specPattern: SpecPattern, projectRoot: string): string => {
+  
   const getFilePath = (fileName: string): string => join(projectRoot, fileName);
+  const getCySupportFile: string = join(projectRoot, 'cypress/support/component.ts')
+
 
   const getIncludePaths = (): string[] => {
     if (Array.isArray(specPattern)) {
-      return [...specPattern.map(sp => getFilePath(sp))]
+      return [...specPattern.map(sp => getFilePath(sp)), getCySupportFile]
     }
 
     if (typeof specPattern === 'string') {
-      return [getFilePath(specPattern)]
+      return [getFilePath(specPattern), getCySupportFile]
     }
 
     return []

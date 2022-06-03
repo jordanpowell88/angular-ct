@@ -1,9 +1,8 @@
-import { mount } from 'cypress-angular-component-testing';
 import { RoundCardButtonsComponent } from './round-card-buttons.component';
 
 describe('RoundCardButtonsComponent', () => {
   beforeEach(() => {
-    mount(RoundCardButtonsComponent);
+    cy.mount(RoundCardButtonsComponent);
   });
 
   it('should render the correct round card buttons', () => {

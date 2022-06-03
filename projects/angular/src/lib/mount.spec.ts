@@ -8,12 +8,14 @@ describe('mount', () => {
   it('returns a MountResponse', () => {
     // arrange
     // act
-    const response = mount(AngularComponent, {});
+    const actual = mount(AngularComponent, {});
     
     // assert
-    expect(response.component).toBeInstanceOf(AngularComponent);
-    expect(response.fixture).toBeInstanceOf(ComponentFixture);
-    expect(response.testBed).toBeInstanceOf(TestBed);
+    actual.then(response => {
+      expect(response.component).toBeInstanceOf(AngularComponent);
+      expect(response.fixture).toBeInstanceOf(ComponentFixture);
+      expect(response.testBed).toBeInstanceOf(TestBed);
+    })
   })
 
   it('adds inputs to componentInstance', () => {
@@ -21,10 +23,12 @@ describe('mount', () => {
     const title = "My Test Title";
 
     // act
-    const response = mount(AngularComponent, { inputs: { title }});
+    const actual = mount(AngularComponent, { inputs: { title }});
 
     // assert
-    expect(response.component.title).toEqual(title);
+    actual.then(response => {
+      expect(response.component.title).toEqual(title);
+    })
   })
 
   describe('setupFixture', () => {

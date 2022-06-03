@@ -1,10 +1,9 @@
-import { mount } from 'cypress-angular-component-testing';
 import { CardComponent } from '../card/card.component';
 import { ResourcesComponent } from './resources.component';
 
 describe('ResourcesComponent', () => {
   beforeEach(() => {
-    mount(ResourcesComponent, {
+    cy.mount(ResourcesComponent, {
       declarations: [CardComponent]
     });
   });

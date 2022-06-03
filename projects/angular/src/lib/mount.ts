@@ -79,16 +79,16 @@ export function mount<T extends object>(
   component: Type<T>,
   config: TestBedConfig<T> = {},
   autoDetectChanges = true
-): MountResponse<T> {
+): Cypress.Chainable<MountResponse<T>> {
   const testBed: TestBed = initTestBed(component, config);
 
   const fixture = setupFixture(component, testBed, autoDetectChanges);
 
   testBed.compileComponents();
 
-  return {
+  return cy.wrap({
     fixture,
     testBed,
     component: setupComponent(config, fixture)
-  };
+  });
 }
