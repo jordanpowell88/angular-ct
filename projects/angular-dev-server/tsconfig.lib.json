@@ -3,7 +3,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/lib",
-    "target": "ES2018",
+    "target": "es2020",
     "module": "ESNext",
     "declaration": true,
     "declarationMap": true,
