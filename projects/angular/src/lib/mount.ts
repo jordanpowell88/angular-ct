@@ -1,9 +1,7 @@
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Type } from '@angular/core';
 import {
-  ComponentFixture, getTestBed, TestBed,
-  TestComponentRenderer,
-  TestModuleMetadata
+  ComponentFixture, getTestBed, TestBed, TestModuleMetadata
 } from '@angular/core/testing';
 import {
   BrowserDynamicTestingModule,
@@ -79,16 +77,16 @@ export function mount<T extends object>(
   component: Type<T>,
   config: TestBedConfig<T> = {},
   autoDetectChanges = true
-): MountResponse<T> {
+): Cypress.Chainable<MountResponse<T>> {
   const testBed: TestBed = initTestBed(component, config);
 
   const fixture = setupFixture(component, testBed, autoDetectChanges);
 
   testBed.compileComponents();
 
-  return {
+  return cy.wrap({
     fixture,
     testBed,
     component: setupComponent(config, fixture)
-  };
+  });
 }

@@ -1,14 +1,13 @@
-import { mount } from 'cypress-angular-component-testing';
 import { CardComponent } from './card.component';
 
 describe('CardComponent', () => {
   it('should render a card with empty defaults', () => {
-    mount(CardComponent);
+    cy.mount(CardComponent);
     cy.get('a.card').should('exist');
   });
 
   it('add Input props to Card Component', () => {
-    mount(CardComponent, {
+    cy.mount(CardComponent, {
       inputs: { href: 'https://docs.cypress.io', title: 'Card Title' },
     });
     cy.get('a.card[href="https://docs.cypress.io"]').should('exist');

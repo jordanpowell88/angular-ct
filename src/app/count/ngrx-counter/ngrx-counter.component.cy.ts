@@ -1,11 +1,9 @@
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
-import { MountResponse } from 'projects/angular/src/lib/mount';
-import { mount } from "../../../../projects/angular/src/public-api";
+import { MountResponse } from '../../../../projects/angular/src/lib/mount';
 import { decrementCount, incrementCount } from '../count-store/count.actions';
 import { NgrxCounterComponent } from "./ngrx-counter.component";
 
 describe('NgRxCounterComponent', () => {
-    let response: MountResponse<NgrxCounterComponent>
     const initialState = {
         count: {
             count: 0
@@ -13,13 +11,15 @@ describe('NgRxCounterComponent', () => {
     }
 
     let store: MockStore;
+    let response: MountResponse<NgrxCounterComponent>;
 
     beforeEach(() => {
-        response = mount(NgrxCounterComponent, {
+        cy.mount(NgrxCounterComponent, {
             providers: [provideMockStore({ initialState })]
-        })
-
-        store = response.testBed.inject(MockStore);
+        }).then(res => {
+            response = res;
+            store = response.testBed.inject(MockStore)
+        });
     })
     it('can mount', () => {
         cy.get('h3').contains('NgRx Counter: 0');

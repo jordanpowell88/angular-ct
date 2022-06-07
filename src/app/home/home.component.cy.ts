@@ -1,10 +1,9 @@
-import { mount } from "cypress-angular-component-testing"
 import { HomeComponent } from "./home.component"
 import { HomeModule } from "./home.module"
 
 describe('HomeComponent', () => {
     beforeEach(() => {
-        mount(HomeComponent, {
+        cy.mount(HomeComponent, {
           imports: [HomeModule]
         })
     })
