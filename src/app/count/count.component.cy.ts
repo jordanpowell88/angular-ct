@@ -6,11 +6,14 @@ import { ObservablesComponent } from "./observables/observables.component"
 import { ObservablesService } from "./observables/observables.service"
 import { OverridesComponent } from "./overrides/overrides.component"
 import { TestOutputButtonComponent } from "./test-output-button/test-output-button.component"
+import { StoreModule } from '@ngrx/store';
+import { CountStoreModule } from './count-store/count-store.module';
 
 describe('CountComponent', () => {
     const config: TestBedConfig<CountComponent> = {
         declarations: [TestOutputButtonComponent, ObservablesComponent, NgrxCounterComponent, OverridesComponent],
-        providers: [ObservablesService, provideMockStore()]
+        providers: [ObservablesService],
+        imports: [StoreModule.forRoot({}, {}), CountStoreModule]
     }
 
     it('can click the child Button that updates state (triggers change detection)', () => {

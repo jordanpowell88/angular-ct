@@ -1,25 +1,15 @@
-import { MockStore, provideMockStore } from "@ngrx/store/testing";
-import { MountResponse } from '../../../../projects/angular/src/lib/mount';
-import { decrementCount, incrementCount } from '../count-store/count.actions';
+import { StoreModule } from "@ngrx/store";
+import { CountStoreModule } from "../count-store/count-store.module";
 import { NgrxCounterComponent } from "./ngrx-counter.component";
 
 describe('NgRxCounterComponent', () => {
-    const initialState = {
-        count: {
-            count: 0
-        }
-    }
-
-    let store: MockStore;
-    let response: MountResponse<NgrxCounterComponent>;
-
     beforeEach(() => {
         cy.mount(NgrxCounterComponent, {
-            providers: [provideMockStore({ initialState })]
-        }).then(res => {
-            response = res;
-            store = response.testBed.inject(MockStore)
-        });
+            imports: [
+                StoreModule.forRoot({}, {}),
+                CountStoreModule
+            ]
+        })
     })
     it('can mount', () => {
         cy.get('h3').contains('NgRx Counter: 0');
@@ -27,27 +17,13 @@ describe('NgRxCounterComponent', () => {
 
     it('can increment the count by dispatching action and selectors updates using MockStore.setState', () => {
         cy.get('h3').contains('NgRx Counter: 0');
-        cy.spy(store, 'dispatch').as('mockStoreSpy')
-        cy.get('button').contains('Increment +').click();
-        cy.get('@mockStoreSpy').should('have.been.calledWith', incrementCount()).then(() => {
-            store.setState({ count: { count: 100 }})
-            response.fixture.detectChanges();
-        });
-        
-        cy.get('h3').contains('NgRx Counter: 100');
+        cy.get('button').contains('Increment +').click()
+        cy.get('h3').contains('NgRx Counter: 1');
     })
 
     it('can decrement the count by dispatching action and selectors updates using MockStore.setState', () => {
         cy.get('h3').contains('NgRx Counter: 0')
-        cy.spy(store, 'dispatch').as('mockStoreSpy');
         cy.get('button').contains('Decrement -').click();
-        cy.get('@mockStoreSpy').should('have.been.calledWith', decrementCount());
-        // TODO create a custom commond that takes a function and calls changeDetection automatically
-        // cy.wrapAndRun(store.setState({ count: 100 }));
-        cy.wrap(store).then(() => {
-            store.setState({ count: { count: -10 }})
-            response.fixture.detectChanges();
-        })
-        cy.get('h3').contains('NgRx Counter: -10')
+        cy.get('h3').contains('NgRx Counter: -1')
     })
 })

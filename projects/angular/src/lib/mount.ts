@@ -46,7 +46,6 @@ function initTestBed<T extends object>(component: Type<T>, config: TestBedConfig
     
   testBed.configureTestingModule({
     ...bootstrapModule(component, config),
-    // teardown: { destroyAfterEach: true }
   });
     
   return testBed;
