@@ -1,34 +1,44 @@
+// import '@angular/compiler';
 import { CommonModule } from '@angular/common';
 import { Type } from '@angular/core';
 import {
-  ComponentFixture, getTestBed, TestBed, TestModuleMetadata
+  ComponentFixture,
+  getTestBed,
+  TestBed,
+  TestModuleMetadata,
 } from '@angular/core/testing';
 import {
   BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting
+  platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 
 export interface TestBedConfig<T extends object> extends TestModuleMetadata {
   // this extends the normal angular TestBed config
   // and allows us to pass component Input() props as part of the config object
-  inputs?: Partial<{ [P in keyof T]: T[P] }>
+  inputs?: Partial<{ [P in keyof T]: T[P] }>;
 }
 
-export type MountResponse<T extends object> = { fixture: ComponentFixture<T>, testBed: TestBed, component: T }
+export type MountResponse<T extends object> = {
+  fixture: ComponentFixture<T>;
+  testBed: TestBed;
+  component: T;
+};
 
-export function bootstrapModule<T extends object>(component: Type<T>, config: TestBedConfig<T>): TestBedConfig<T> {
+export function bootstrapModule<T extends object>(
+  component: Type<T>,
+  config: TestBedConfig<T>
+): TestBedConfig<T> {
   const { inputs, ...testModuleMetaData } = config;
 
   if (!testModuleMetaData.declarations) {
-    testModuleMetaData.declarations = []
+    testModuleMetaData.declarations = [];
   }
 
   if (!testModuleMetaData.imports) {
-    testModuleMetaData.imports = []
+    testModuleMetaData.imports = [];
   }
 
-
-  testModuleMetaData.declarations.push(component)
+  testModuleMetaData.declarations.push(component);
 
   if (!testModuleMetaData.imports.includes(CommonModule)) {
     testModuleMetaData.imports.push(CommonModule);
@@ -37,44 +47,65 @@ export function bootstrapModule<T extends object>(component: Type<T>, config: Te
   return testModuleMetaData;
 }
 
-function initTestBed<T extends object>(component: Type<T>, config: TestBedConfig<T>): TestBed {
+function initTestBed<T extends object>(
+  component: Type<T>,
+  config: TestBedConfig<T>
+): TestBed {
+  const { providers, ...configRest } = config;
+
   const testBed: TestBed = getTestBed();
-  
+
   testBed.resetTestEnvironment();
+
   testBed.initTestEnvironment(
     BrowserDynamicTestingModule,
-    platformBrowserDynamicTesting(), {
-    teardown: { destroyAfterEach: false }
-}
+    platformBrowserDynamicTesting(),
+    {
+      teardown: { destroyAfterEach: false },
+    }
   );
-    
+
   testBed.configureTestingModule({
-    ...bootstrapModule(component, config),
+    ...bootstrapModule(component, configRest),
   });
-    
+
+  if (providers != null) {
+    testBed.overrideComponent(component, {
+      add: {
+        providers,
+      },
+    });
+  }
+
   return testBed;
 }
 
-export function setupFixture<T extends object>(component: Type<T>, testBed: TestBed, autoDetectChanges: boolean): ComponentFixture<T> {
-  const fixture = testBed.createComponent(component)
-  
+export function setupFixture<T extends object>(
+  component: Type<T>,
+  testBed: TestBed,
+  autoDetectChanges: boolean
+): ComponentFixture<T> {
+  const fixture = testBed.createComponent(component);
+
   fixture.whenStable().then(() => {
-    fixture.autoDetectChanges(autoDetectChanges)
-  })
-  
+    fixture.autoDetectChanges(autoDetectChanges);
+  });
+
   return fixture;
 }
 
-export function setupComponent<T extends object>(config: TestBedConfig<T>, fixture: ComponentFixture<T>): T {
+export function setupComponent<T extends object>(
+  config: TestBedConfig<T>,
+  fixture: ComponentFixture<T>
+): T {
   let component: T = fixture.componentInstance;
 
   if (config?.inputs) {
-    component = Object.assign(component, config.inputs)
+    component = Object.assign(component, config.inputs);
   }
 
   return component;
 }
-
 
 export function mount<T extends object>(
   component: Type<T>,
@@ -85,11 +116,9 @@ export function mount<T extends object>(
 
   const fixture = setupFixture(component, testBed, autoDetectChanges);
 
-  testBed.compileComponents();
-
   return cy.wrap({
     fixture,
     testBed,
-    component: setupComponent(config, fixture)
+    component: setupComponent(config, fixture),
   });
 }
