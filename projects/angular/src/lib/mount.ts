@@ -29,7 +29,11 @@ export function bootstrapModule<T extends object>(component: Type<T>, config: Te
 
 
   testModuleMetaData.declarations.push(component)
-  testModuleMetaData.imports.push(CommonModule);
+
+  if (!testModuleMetaData.imports.includes(CommonModule)) {
+    testModuleMetaData.imports.push(CommonModule);
+  }
+
   return testModuleMetaData;
 }
 
