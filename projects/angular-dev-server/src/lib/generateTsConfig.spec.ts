@@ -13,7 +13,7 @@ describe('generateTsConfig', () => {
     "types": ["/blah/blah2/node_modules/cypress"],
     "allowSyntheticDefaultImports": true
   },
-  "include": ["/blah/blah2/src/**/*.d.ts","/blah/blah2/**/abcdefg","/blah/blah2/cypress/support/component.ts"]
+  "include": ["/blah/blah2/**/abcdefg","/blah/blah2/cypress/support/component.ts"]
 }
 `
 
@@ -40,7 +40,7 @@ describe('generateTsConfig', () => {
     "types": ["/blah/blah2/node_modules/cypress"],
     "allowSyntheticDefaultImports": true
   },
-  "include": ["/blah/blah2/src/**/*.d.ts","/blah/blah2/**/abcdefg","/blah/blah2/**/stuvxyz","/blah/blah2/123456789","/blah/blah2/cypress/support/component.ts"]
+  "include": ["/blah/blah2/**/abcdefg","/blah/blah2/**/stuvxyz","/blah/blah2/123456789","/blah/blah2/cypress/support/component.ts"]
 }
 `
 

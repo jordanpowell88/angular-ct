@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AngularComponent } from './angular.component';
+import { _expect as expect } from './expect';
 
 describe('AngularComponent', () => {
   let component: AngularComponent;

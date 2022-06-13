@@ -2,34 +2,36 @@ import { CommonModule } from '@angular/common';
 import { Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularComponent } from './angular.component';
-import { bootstrapModule, mount, setupComponent, setupFixture, TestBedConfig } from './mount';
+import { bootstrapModule, mount, MountResponse, setupComponent, setupFixture, TestBedConfig } from './mount';
+import { _expect as expect } from './expect'
+
 
 describe('mount', () => {
-  it('returns a MountResponse', () => {
-    // arrange
-    // act
-    const actual = mount(AngularComponent, {});
+  // it('returns a MountResponse', async () => {
+  //   // arrange
     
-    // assert
-    actual.then(response => {
-      expect(response.component).toBeInstanceOf(AngularComponent);
-      expect(response.fixture).toBeInstanceOf(ComponentFixture);
-      expect(response.testBed).toBeInstanceOf(TestBed);
-    })
-  })
+  //   // act
+  //   mount(AngularComponent, {}).then((response: MountResponse<AngularComponent>) => {
+  //     // assert
+  //     // expect(response).toBeTruthy()
+  //     expect(response.component).toBeInstanceOf(AngularComponent);
+  //     expect(response.fixture).toBeInstanceOf(ComponentFixture);
+  //     expect(response.testBed).toBeInstanceOf(TestBed);
+  //   })
+  // })
 
-  it('adds inputs to componentInstance', () => {
-    // arrange\
-    const title = "My Test Title";
+  // it('adds inputs to componentInstance', () => {
+  //   // arrange\
+  //   const title = "My Test Title";
 
-    // act
-    const actual = mount(AngularComponent, { inputs: { title }});
+  //   // act
+  //   const actual = mount(AngularComponent, { inputs: { title }});
 
-    // assert
-    actual.then(response => {
-      expect(response.component.title).toEqual(title);
-    })
-  })
+  //   // assert
+  //   actual.then((response: MountResponse<AngularComponent>) => {
+  //     expect(response.component.title).toEqual(title);
+  //   })
+  // })
 
   describe('setupFixture', () => {
     const fixture = {
