@@ -41,7 +41,8 @@ export async function getWebpackConfig(tmpDir: string): Promise<Configuration> {
       },
       plugins: [
           new AngularWebpackPlugin({
-              tsconfig: `${tmpDir}/tsconfig.cy.json`
+              tsconfig: `${tmpDir}/tsconfig.cy.json`,
+              jitMode: true
           }),
       ],
     }
