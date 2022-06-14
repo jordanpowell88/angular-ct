@@ -1,4 +1,4 @@
-import '../../projects/angular/src/support/index';
+import '../../projects/angular/support/index';
 
 import { mount } from '../../projects/angular/src/lib/mount'
 

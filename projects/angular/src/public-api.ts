@@ -3,4 +3,3 @@
  */
 
 export { mount, MountResponse } from './lib/mount';
-export * from './support'
